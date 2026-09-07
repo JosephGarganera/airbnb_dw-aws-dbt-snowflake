@@ -1,4 +1,4 @@
-{% set flag = 1 %}
+{% set flag = 2 %}
 
 
 SELECT * FROM {{ ref('bronze_bookings')}}

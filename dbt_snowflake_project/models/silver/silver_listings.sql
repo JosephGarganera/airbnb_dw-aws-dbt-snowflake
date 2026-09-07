@@ -8,7 +8,7 @@
 with cleaned_listings as (
   select
     listing_id,
-    host_id, -- Fix: Added missing comma to prevent accidental aliasing
+    host_id, 
     
     -- Data Quality Fix 1: Handle missing categorical data with a default label
     coalesce(trim(property_type), 'Unknown') as property_type,
@@ -46,6 +46,5 @@ from
   cleaned_listings
 
 {% if is_incremental() %}
-  -- Fix: Enforce consistent lowercase syntax formatting to match your project profile
   where created_at > (select max(created_at) from {{ this }})
 {% endif %}

@@ -1,0 +1,9 @@
+snapshots:
+  - name: snapshot_listings
+    relation: source('staging', 'listings')
+    config:
+      schema: gold
+      database: "{{ target.database }}"
+      unique_key: listing_id
+      strategy: timestamp
+      updated_at: created_at

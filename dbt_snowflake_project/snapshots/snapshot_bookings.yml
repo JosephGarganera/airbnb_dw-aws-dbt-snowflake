@@ -1,0 +1,9 @@
+snapshots:
+  - name: snapshot_bookings
+    relation: source('staging', 'bookings')
+    config:
+      schema: gold
+      database: "{{ target.database }}"
+      unique_key: booking_id
+      strategy: timestamp
+      updated_at: created_at # Monitored execution timestamp
